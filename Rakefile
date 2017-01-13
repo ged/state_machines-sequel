@@ -6,7 +6,7 @@ rescue LoadError
 	abort "This Rakefile requires hoe (gem install hoe)"
 end
 
-GEMSPEC = 'statemachines-sequel.gemspec'
+GEMSPEC = 'state_machines-sequel.gemspec'
 
 
 Hoe.plugin :mercurial
@@ -16,25 +16,30 @@ Hoe.plugin :deveiate
 Hoe.plugins.delete :rubyforge
 Hoe.plugins.delete :gemcutter # Remove for public gems
 
-hoespec = Hoe.spec 'statemachines-sequel' do |spec|
-	spec.readme_file = 'README.rdoc'
-	spec.history_file = 'History.rdoc'
-	spec.extra_rdoc_files = FileList[ '*.rdoc' ]
-	spec.license 'BSD'
+hoespec = Hoe.spec 'state_machines-sequel' do |spec|
+	spec.readme_file = 'README.md'
+	spec.history_file = 'History.md'
+	spec.extra_rdoc_files = FileList[ '*.rdoc', '*.md' ]
+	spec.license 'BSD-3-Clause'
+	spec.urls = {
+		home:   'http://deveiate.org/projects/state_machines-sequel',
+		code:   'http://bitbucket.org/ged/state_machines-sequel',
+		docs:   'http://deveiate.org/code/state_machines-sequel',
+		github: 'http://github.com/ged/state_machines-sequel',
+	}
 
 	spec.developer 'Michael Granger', 'ged@FaerieMUD.org'
 
-	spec.dependency 'loggability', '~> 0.11'
+	spec.dependency 'sequel',                  '~> 4.32'
+	spec.dependency 'state_machines',          '~> 0.4'
 
-	spec.dependency 'hoe-deveiate',            '~> 0.3', :developer
+	spec.dependency 'hoe-deveiate',            '~> 0.7', :developer
 	spec.dependency 'simplecov',               '~> 0.7', :developer
 	spec.dependency 'rdoc-generator-fivefish', '~> 0.1', :developer
 
-	spec.require_ruby_version( '>=2.2.0' )
+	spec.require_ruby_version( '>=2.0.0' )
 	spec.hg_sign_tags = true if spec.respond_to?( :hg_sign_tags= )
 	spec.check_history_on_release = true if spec.respond_to?( :check_history_on_release= )
-
-	self.rdoc_locations << "deveiate:/usr/local/www/public/code/#{remote_rdoc_dir}"
 end
 
 
@@ -60,6 +65,8 @@ CLOBBER.include( 'coverage' )
 # Use the fivefish formatter for docs generated from development checkout
 if File.directory?( '.hg' )
 	require 'rdoc/task'
+
+	hoespec.rdoc_locations << "deveiate:/usr/local/www/public/code/#{hoespec.remote_rdoc_dir}"
 
 	Rake::Task[ 'docs' ].clear
 	RDoc::Task.new( 'docs' ) do |rdoc|

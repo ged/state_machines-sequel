@@ -7,10 +7,10 @@ code
 : http://bitbucket.org/ged/StateMachines-Sequel
 
 github
-: https://github.com/ged/statemachines-sequel
+: https://github.com/ged/state_machines-sequel
 
 docs
-: http://deveiate.org/code/statemachines-sequel
+: http://deveiate.org/code/state_machines-sequel
 
 
 ## Description
@@ -25,14 +25,14 @@ docs
 
 ## Installation
 
-    $ gem install statemachines-sequel
+    $ gem install state_machines-sequel
 
 
 ## Contributing
 
 You can check out the current development source with Mercurial via its
-{project page}[http://bitbucket.org/ged/statemachines-sequel]. Or if you prefer Git, via 
-{its Github mirror}[https://github.com/ged/statemachines-sequel].
+{project page}[http://bitbucket.org/ged/state_machines-sequel]. Or if you prefer Git, via 
+{its Github mirror}[https://github.com/ged/state_machines-sequel].
 
 After checking out the source, run:
 

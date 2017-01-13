@@ -1,0 +1,5 @@
+hoe-deveiate -v "~> 0.7.0"
+sequel -v "~> 4.32"
+state_machines -v "~> 0.4"
+rdoc -v "~> 4.2"
+simplecov -v "~> 0.11"
